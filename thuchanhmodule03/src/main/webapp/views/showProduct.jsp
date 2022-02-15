@@ -13,27 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div class="col-sm-12">
-    <a href="/home?action=create" class="btn btn-success">Create</a>
+    <a href="/home?action=create" class="btn btn-success">Create new product</a> <br> 
     <form action="/home?action=search" method="post">
         <input name="search">
         <button type="submit">Search</button>
@@ -48,11 +29,10 @@
             <th>Color</th>
             <th>description</th>
             <th>CateGory</th>
-            <th>Action</th>
+            <th colspan="2" style="text-align: center">Action</th>
         </tr>
         </thead>
         <tbody>
-
         <c:forEach items="${requestScope.listProduct}" var="product">
             <tr>
                 <td>${product.id}</td>
@@ -62,13 +42,10 @@
                 <td>${product.color}</td>
                 <td> ${product.description}</td>
                 <td> ${product.nameCategory}</td>
-
-
-                <td><a href="/home?action=edit&&id=${product.id}" class="btn btn-warning">Edit</a></td>
-                <td><a href="/home?action=delete&&id=${product.id}" class="btn btn-danger">Delete</a></td>
+                <td><a style="background-color: deepskyblue; color: white" href="/home?action=edit&&id=${product.id}" class="btn btn-warning">Edit</a></td>
+                <td><a style="background-color: red; color: white" href="/home?action=delete&&id=${product.id}" class="btn btn-danger">Delete</a></td>
             </tr>
         </c:forEach>
-
         </tbody>
     </table>
 </div>

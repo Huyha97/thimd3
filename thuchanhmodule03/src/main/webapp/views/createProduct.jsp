@@ -1,62 +1,76 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: This MC
-  Date: 15/02/2022
-  Time: 9:23 AM
-  To change this template use File | Settings | File Templates.
+    Document   : ManagerProduct
+    Created on : Dec 28, 2020, 5:19:02 PM
+    Author     : trinh
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/manager.css" rel="stylesheet" type="text/css"/>
     <style>
-        td{
-            height: 50px;
-            width: 100px;
-        }
-        table , td , tr , th {
-            border: 1px solid black;
-            border-collapse: collapse;
+        img {
+            width: 200px;
+            height: 120px;
         }
     </style>
-</head>
 <body>
+
+<!-- Edit Modal HTML -->
 <form method="post" action="/home?action=create">
-    <table>
-        <tr>
-            <td><label>
-                <input name="name" placeholder="input name">
-            </label></td>
+    <div class="modal-header">
+        <h4 class="modal-title">Add Product</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>name</label>
+            <input name="name" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>price</label>
+            <input name="price" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>quantity</label>
+            <input name="quantity" type="number" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>color</label>
+            <input name="color" type="text" class="form-control" required></input>
+        </div>
+        <div class="form-group">
+            <label>description</label>
+            <textarea name="description" class="form-control" required></textarea>
+        </div>
+        <td>
+            <label>
+                <select name="category">
+                    <c:forEach items="${listClass}" var="c">
+                        <option value="${c.id}">${c.name}</option>
+                    </c:forEach>
+                </select>
+            </label>
+        </td>
 
-            <td><label>
-                <input name="price" placeholder="input price">
-            </label></td>
-
-            <td><label>
-                <input name="quantity" placeholder="input quantity">
-            </label></td>
-
-            <td><label>
-                <input name="color" placeholder="input color">
-            </label></td>
-
-            <td><label>
-                <input name="description" placeholder="input description">
-            </label></td>
-            <td>
-                <label>
-                    <select name="category">
-                        <c:forEach items="${listClass}" var="c">
-                            <option value="${c.id}">${c.name}</option>
-                        </c:forEach>
-                    </select>
-                </label>
-            </td>
-        </tr>
-    </table>
-    <button type="submit">Create</button>
+    </div>
+    <div class="modal-footer">
+        <input style="color: white; background-color: limegreen" type="submit" value="Add"/>
+        <button style="color: white; background-color: darkgrey" type="button" name="back" onclick="history.back()">Back</button>
+    </div>
 </form>
+<script src="js/manager.js" type="text/javascript"></script>
 </body>
 </html>
-
