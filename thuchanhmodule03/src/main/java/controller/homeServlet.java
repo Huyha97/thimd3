@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/home")
 public class homeServlet extends HttpServlet {
@@ -61,7 +62,7 @@ public class homeServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        RequestDispatcher requestDispatcher;
+        RequestDispatcher requestDispatcher ;
 
         switch (action) {
             case "create":
@@ -73,6 +74,9 @@ public class homeServlet extends HttpServlet {
                 int category = Integer.parseInt(req.getParameter("category"));
                 Product product = new Product(name, price, quantity, color, description, category);
                 productService.save(product);
+                resp.sendRedirect("/home");
+                break;
+
 
             case "edit":
                 int idEdit = Integer.parseInt(req.getParameter("id"));

@@ -15,8 +15,9 @@ public class ProductService {
     public void save(Product product) {
         ProductDao.saveProduct(product);
         productList = ProductDao.getAll();
+    }
 
-    } public void edit(Product product ) {
+    public void edit(Product product ) {
         ProductDao.editProduct( product );
         productList = ProductDao.getAll();
 

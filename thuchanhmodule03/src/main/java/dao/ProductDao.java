@@ -47,8 +47,7 @@ public class ProductDao {
             preparedStatement.setString(4, product.getColor());
             preparedStatement.setString(5,product.getDescription());
             preparedStatement.setInt(6,product.getCategory());
-
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
         } catch (Exception throwables) {
             throwables.printStackTrace();
