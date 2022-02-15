@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="col-sm-12">
-    <a href="/home?action=create" class="btn btn-success">Create new product</a> <br> 
+    <a href="/home?action=create" class="btn btn-success">Create new product</a> <br>
     <form action="/home?action=search" method="post">
         <input name="search">
         <button type="submit">Search</button>
